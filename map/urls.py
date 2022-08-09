@@ -4,4 +4,5 @@ from . import views
 
 urlpatterns = [
     path('', views.map, name='map'),
+    path('makeroom/', views.makeroom, name="makeroom"),
 ]
