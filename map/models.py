@@ -10,3 +10,13 @@ class Room(models.Model):
     date = models.DateField()
     time = models.TimeField()
     comment = models.TextField()
+    
+    def to_json(self):
+        return{
+            "markerposition": self.markerposition,
+            "title": self.title,
+            "who": self.who,
+            "date": self.date,
+            "time": self.time,
+            "comment": self.comment
+        }

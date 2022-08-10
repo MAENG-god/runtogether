@@ -7,9 +7,11 @@ import json
 
 def map(request):
     roomlist = Room.objects.all()
+    roomlist_js = json.dumps([room.to_json() for room in roomlist], default=str)
     template = loader.get_template("map/map.html")
     context = {
         "roomlist": roomlist,
+        "roomlist_js": roomlist_js,
     }
     return HttpResponse(template.render(context, request))
 
