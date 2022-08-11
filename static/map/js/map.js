@@ -8,6 +8,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 
+
 for(var i = 0; i<roomlist.length; i++){
     var position_str = roomlist[i].markerposition;
     var position_slice = position_str.slice(1, -1)
@@ -31,7 +32,6 @@ for(var i = 0; i<roomlist.length; i++){
             '    <div class="info">' + 
             '        <div class="title">' + 
                         roomlist[i].title + 
-            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
             '        </div>' + 
             '        <div class="body">' + 
             '                <button type="button" class="img btn btn-primary" onclick="clickbtn()">참가하기</button>' +
@@ -49,14 +49,12 @@ for(var i = 0; i<roomlist.length; i++){
         content: content,    
         position: markposition
     });
-
-    function closeOverlay(){
-        overlay.setMap(null);
-    }
+    
     
 
     // kakao.maps.event.addListener(marker_fix, 'mouseover', makeOverListener(map, overlay));
     // kakao.maps.event.addListener(marker_fix, 'mouseout', makeOutListener(overlay));
+
     kakao.maps.event.addListener(marker_fix, 'click', openListener(map, overlay));
 }
 
@@ -76,18 +74,15 @@ function makeOutListener(overlay) {
 
 //오버레이 클릭 시 열기
 function openListener(map, overlay) {
-    if(overlay.getMap() == null){
-        return function() {
-            overlay.setMap(map);
-        };
-    }   
-    else{
-        return function(){
+    return function() {
+        if(overlay.getMap() === null){
+        overlay.setMap(map);}
+        else{
             overlay.setMap(null);
         }
-    }
-}
+    };
 
+}
 
 var markers = []
 
@@ -121,8 +116,9 @@ var createroom2 = function(){
     room_content = document.createElement("div")
     room_content.className = "room_content";
     room_content.innerHTML = `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 24rem;">
         <div class="card-body">
+            <h1>방 만들기</h1>
             <div><h5 class="card-title">방 제목</h5><input name="roomname" class="input_name" type="text"></div>
             <br>
 

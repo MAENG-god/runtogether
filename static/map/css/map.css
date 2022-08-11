@@ -16,14 +16,20 @@
 
 .room_content{
     position: absolute;
-    width: 40%;
-    margin-left: 85%;
-    margin-top: 0;
+    width: 60%;
+    margin-left: 75%;
+    margin-top: 5%;
     z-index: 1;
+}
+
+.card{
+    outline: 1px solid black;
 }
 
 #map{
     outline: 2px solid black;
+    margin-left: 10%;
+    margin-top: 5%;
 }
 
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
