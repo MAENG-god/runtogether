@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,8 @@ SECRET_KEY = '^-20pdm00z@p9lemxf=$k51l@l(mv7_hnz9y_mm*mas!4tg=ei'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django-env.eba-3xxmwnmv.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["django-env.eba-3xxmwnmv.us-west-2.elasticbeanstalk.com",
+                 "127.0.0.1"]
 
 
 # Application definition
@@ -118,8 +120,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+ROOT_DIR = os.path.dirname(BASE_DIR)
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [ 
     BASE_DIR / "static",
 ]
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
