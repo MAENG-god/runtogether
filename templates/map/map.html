@@ -7,21 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .card {position: absolute;left: 0;bottom: 40px;margin-left: -144px;}
+        .card {
+          position: absolute;
+          height: 600px;
+          margin-left: 100%;
+          transform: translate(-18rem, 0);
+          width: 18rem;
+          z-index: 1;
+        }
         .createroom1{
           position: absolute;
           margin-top: -100px;
-          margin-left: 45%;
-          margin-right: 45%;
+          margin-left: 50%;
+          transform: translate(-4.5rem, 0);
           z-index: 1;
-      }
+          width: 9rem;
+        }
       
         .createroom2{
             position: absolute;
             margin-top: -100px;
-            margin-left: 45%;
-            margin-right: 45%;
+            margin-left: 50%;
+            transform: translate(-4.5rem, 0);
             z-index: 1;
+            width: 9rem;
         }
 
         .room_content{
@@ -30,6 +39,14 @@
             margin-left: 75%;
             margin-top: 5%;
             z-index: 1;
+        }
+
+        .room_form{
+          position:absolute;
+          width: 80%;
+          height: 600px;
+          margin-left: 10%;
+          margin-top: -600px;
         }
 
         .card{
@@ -223,11 +240,10 @@ var createroom2 = function(){
     var makeplace = document.querySelector('.createroom2');
     makeplace.style.visibility = "hidden";
     room_content = document.createElement("div")
-    room_content.className = "room_content";
+    room_content.className = "card";
     room_content.innerHTML = `
-    <div class="card" style="width: 24rem;">
         <div class="card-body">
-            <h1>방 만들기</h1>
+            <h1>방 만들기<input type="submit" class="btn btn-dark btn-lg" value="생성하기"></h1>
             <div><h5 class="card-title">방 제목</h5><input name="roomname" class="input_name" type="text"></div>
             <br>
 
@@ -262,11 +278,9 @@ var createroom2 = function(){
 
             <input name="latling" value="${marker_position}" style="visibility:hidden;">
 
-            <input type="submit" class="btn btn-dark btn-lg" value="생성">
-
             
         </div>
-    </div>
+
     `
     var room_form = document.querySelector(".room_form");
     room_form.appendChild(room_content)
